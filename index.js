@@ -4,11 +4,11 @@ var nicknames = require('./nicknames.json');
 var fs = require('fs');
 
 // Settings
-var debug = true;
+var debug = false;
 var showWindow = false;
 
-var start = 231; // Start from x (NAMEx, EMAIL+x@domain.com)
-var end = 233;
+var start = 0; // Start from x (NAMEx, EMAIL+x@domain.com)
+var end = 10;
 
 var useNicknamesFile = false; // Use nicknames file, or just append numbers to username?
 var useRandomPassword = false; // Generate a random password?
