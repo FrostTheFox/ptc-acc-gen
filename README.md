@@ -22,7 +22,6 @@ The new version on Nightmare.js now:
 ## Requirements
 ### Prerequisites
 * [Node.js](https://nodejs.org/en/)
-* [Python](https://www.python.org/)
 
 ## Usage
 
