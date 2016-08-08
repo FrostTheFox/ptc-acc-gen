@@ -1,6 +1,5 @@
 # Nintendo PTC Account Generator
 
-***ToS accept script has been included. Read further for more information.***
 
 An automation script based on Nightmare.js that can create any number of Nintendo Pokémon Trainer Club accounts with a single  e-mail address. This only works because Nintendo doesn't check for "email+1@domain.com" e-mail tricks, where the e-mail host completely ignores any part after (and including) the plus sign and sends it to "email@domain.com".
 
@@ -29,10 +28,8 @@ The new version on Nightmare.js now:
 
 1. Install requirements with `npm install`
 2. Open [index.js](index.js) and edit the settings at the top of the file.
-3. Run the script with Node.js:
-    `node index.js`
-4. Run the ToS script with Python:
-    `python tos.py output/accounts.txt`
+3. Run using makeaccounts.sh on linux, or makeaccounts.bat on Windows.
+4. Find the generated accounts in PogoPlayer/accounts.csv
 
 ## Configuration
 ### 1. Generate 10 accounts in the format USERx, where x is 0 to 9.
