@@ -25,7 +25,6 @@ var lon = configFile.longitude;
 
 // Reports of changing this tossing errors so i didnt touch
 var country = "US"; // Country code (e.g. BE, FR, US, CA)
-var dob = "1990-01-01"; // Date of birth, yyyy-mm-dd
 
 var outputFile = "PogoPlayer/accounts.csv"; // File which will contain the generated "username password" combinations.
 var outputFormat = "ptc,%NICK%,%PASS%,%LAT%,%LON%,%UN%\r\n"; // Format used to save the account data in outputFile. Supports %NICK%, %PASS%.
@@ -134,7 +133,8 @@ function fillFirstPage(ctr) {
     }
     
     nightmare.evaluate(function(data) {
-            document.getElementById("id_dob").value = data.dob;
+    	    // Set random date between Jan 01 1970 and NOW, then add 18 years to make sure "legal"
+            document.getElementById("id_dob").value = new Date((new Date).getTime() - (Math.random() * (new Date).getTime()) - 18*365*24*60*60*1000 );
             
             var els = document.getElementsByName("id_country");
             for(var i = 0; i < els.length; i++) {
@@ -142,7 +142,7 @@ function fillFirstPage(ctr) {
             }
             
             return document.getElementById("id_dob").value;
-        }, { dob: dob, country: country })
+        }, { country: country })
         .click("form[name='verify-age'] [type=submit]")
         .wait("#id_username")
         .then(function() {
