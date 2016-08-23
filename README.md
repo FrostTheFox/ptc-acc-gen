@@ -39,8 +39,8 @@ New beta install script! try running "install.bat" (and tell pyr0ball if somethi
   - if you cloned non-recursively, run install.bat.
 2. Install requirements with `npm install`
 3. Configure ptc-acc-gen to your settings
-   3a. **BETA** Run config.py, follow prompts, it will automatically fill out the config file for you. Any issues tell teknicsrx7
-   3b. Open [config.js](config.js) and edit the settings in the file.
+  - **BETA** Run config.py, follow prompts, it will automatically fill out the config file for you. Any issues tell teknicsrx7
+  - Open [config.js](config.js) and edit the settings in the file.
 4. Run using `makeaccounts.bat`.
 5. Wait for the generator to fill in the second page, then accept the captcha and hit submit.
 6. Repeat for all accounts
