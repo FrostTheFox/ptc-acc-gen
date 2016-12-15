@@ -1,0 +1,45 @@
+How to use the plusmail trick and still be able to auto verify your accounts.
+-Working as of 12/15/2016 9:00am EST-
+
+PART ONE: Using the plusmail trick.
+
+(If using auto-verification for emails, do part 2 first!)
+
+Niantic has blocked the plusmail trick for Gmail accounts.
+They did not block the plusmail trick for hotmail accounts(yet)
+Create a new hotmail account (http://hotmail.com)
+Change all generator config files useing your gmail to your new hotmail
+You can now create accounts useing just 1 email and the "+" trick without having to
+pause for 5 minutes or add a "." in your email name.
+2captchas should work as normal again
+Accounts will still get hung up and keep retrying if the username is already taken so
+be very unique with the name you choose and if you notice your script is stuck, just check the
+availability of the username it is stuck on as well as the next couple of names.
+(Unconfirmed: Solving captchas too quickly on a slow connection causes hang ups) 
+
+PART 2: Auto-Verify your hotmail accounts
+
+Go to your hotmail webpage (https://outlook.live.com)
+Click the gear at the top right of the page
+Select the option tab from the bottom
+On the left side click mail and then inbox and sweep rules
+Press the + sign to add a rule
+Name it whatever you would like
+In the drop down menu for when a message arrives select "it includes these words"
+and then select "in the subject"
+Type "Pokémon Trainer Club Activation" into the top box and press the +. Then press ok
+In the next dropdown box below "do all of the following" select "forward,redirect, or send" and then 
+"forward the message as an attachment to"
+Enter the the gmail you wish to use and press ok
+Now press "add action" and select "forward, redirect, or send" again but select
+"Redirect this message to" and enter the same gmail. 
+You should now have 2 actions. If so hit ok at the top and then hit save.
+MAKE SURE you hit the save button at the top of the page.
+Now you can use the email auto-verification in google scripts
+(https://github.com/FrostTheFox/ptc-acc-gen/blob/master/gmailverify.js)
+
+P.S. SOMETIMES IT CAN TAKE AWHILE FOR ALL OF THE EMAILS TO REACH YOUR GMAIL. DON'T PANIC, JUST WAIT.)
+
+---Discovered by: Unholygod---
+---Tested by: Unholygod, unbannedincoming, herecomesdiglet, OneWingedAng3l---
+ 
