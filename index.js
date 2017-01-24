@@ -26,6 +26,8 @@ var lon = configFile.longitude;
 var country = configFile.country;
 var useAutoCatcha = configFile.useAutoCatcha;
 var captchaApiKey = configFile.captchaApiKey;
+
+var throttleMiliseconds = configFile.throttle * 1000;
 // End Config File Imports
 
 if (useAutoCatcha)
@@ -59,6 +61,8 @@ if (argv['e']) {
 var outputFile = "PogoPlayer/accounts.csv"; // File which will contain the generated "username password" combinations.
 var outputFormat = "ptc,%NICK%,%PASS%,%LAT%,%LON%,%UN%\r\n"; // Format used to save the account data in outputFile. Supports %NICK%, %PASS%.
 var screenshotFolder = "output/screenshots/";
+var createAccountBegin = null;
+var createAccountEnd = null;
 
 // App data
 var url_ptc = "https://club.pokemon.com/us/pokemon-trainer-club/sign-up/";
@@ -149,6 +153,7 @@ function prepareNightmare(nightmare) {
 function createAccount(ctr) {
     console.log("Creating account " + ctr + " of " + end);
 
+	createAccountBegin = new Date();
     // Launch instance
     handleFirstPage(ctr);
 }
@@ -338,7 +343,12 @@ function fillSignupPage(ctr) {
                                             // Next one, or stop
                                             if (ctr < end) {
                                                 return function() {
-                                                    createAccount(ctr + 1);
+                                                    // Niantic implemented a "no more than 5 accounts per Xmins per IP" throttle.
+                                                    // as a result, we make sure we have at least 2 mins and 1 sec between accounts
+                                                    createAccountEnd = new Date();
+                                                    var waitPeriod = throttleMiliseconds - (createAccountEnd.getTime() - createAccountBegin.getTime());
+                                                    console.log("Account took " + (createAccountEnd.getTime() - createAccountBegin.getTime()) / 1000 + "s to generate, waiting " + waitPeriod / 1000 + " before starting the next one...");
+                                                    setTimeout(function() { createAccount(ctr + 1); }, waitPeriod);
                                                 };
                                             } else {
                                                 return nightmare.end();
