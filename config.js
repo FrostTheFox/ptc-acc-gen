@@ -31,7 +31,10 @@ var config = {
 
     // 2Captcha API key
     useAutoCatcha: false,
-    captchaApiKey: "YOUR_2CAPTCHA_API_KEY_HERE"
+    captchaApiKey: "YOUR_2CAPTCHA_API_KEY_HERE",
+
+    // account creation delay (maximum 1 account creation per <value> in seconds)
+    throttle: 300
 };
 
 module.exports = config;
