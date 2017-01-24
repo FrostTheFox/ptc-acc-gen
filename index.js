@@ -344,7 +344,7 @@ function fillSignupPage(ctr) {
                                             if (ctr < end) {
                                                 return function() {
                                                     // Niantic implemented a "no more than 5 accounts per Xmins per IP" throttle.
-                                                    // as a result, we make sure we have at least 2 mins and 1 sec between accounts
+                                                    // as a result, we make sure we have spend some time between accounts
                                                     createAccountEnd = new Date();
                                                     var waitPeriod = throttleMiliseconds - (createAccountEnd.getTime() - createAccountBegin.getTime());
                                                     console.log("Account took " + (createAccountEnd.getTime() - createAccountBegin.getTime()) / 1000 + "s to generate, waiting " + waitPeriod / 1000 + " before starting the next one...");
