@@ -229,6 +229,12 @@ function handleSignupPage(ctr) {
             if (!validated) {
                 // Missing form data, loop over itself
                 console.log("[" + ctr + "] Servers are acting up... Trying again.");
+
+                // put the current nickname back at the front of the list otherwise we will skip it
+                if (useNicknamesFile) {
+                    nicknames.unshift(_nick);
+                }
+
                 return function() {
                     nightmare.wait(500).refresh().wait();
                     handleFirstPage(ctr);
