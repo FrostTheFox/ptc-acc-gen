@@ -26,6 +26,11 @@ var lon = configFile.longitude;
 var country = configFile.country;
 var useAutoCatcha = configFile.useAutoCatcha;
 var captchaApiKey = configFile.captchaApiKey;
+var useProxy = configFile.useProxy;
+var proxyServer = configFile.proxyServer;
+var useProxyAuth = configFile.useProxyAuth;
+var proxyUsername = configFile.proxyUsername;
+var proxyPassword = configFile.proxyPassword;
 // End Config File Imports
 
 if (useAutoCatcha)
@@ -93,7 +98,17 @@ if (!useRandomPassword && (password.length > 15 || !containsSymbol(password) || 
 }
 
 // LETSAHGO
-var nightmare = Nightmare(nightmare_opts);
+if (!useProxy) {
+    var nightmare = Nightmare(nightmare_opts);
+} else {
+    var nightmare = Nightmare({
+        switches: {
+            'proxy-server': proxyServer // set the proxy server here ...
+        },
+        nightmare_opts
+    });
+    console.log("Using proxy server: " + proxyServer);
+}
 nightmare.useragent(useragent);
 
 createAccount(start);
@@ -159,6 +174,13 @@ function handleFirstPage(ctr) {
         console.log("[DEBUG] Handle first page #" + ctr);
     }
 
+    if (useProxy && useProxyAuth)
+    {
+        if (debug) {
+            console.log("[DEBUG] using proxy username/pass: " + proxyUsername + "/" + proxyPassword);
+        }
+        nightmare.authentication(proxyUsername, proxyPassword)
+    }
     nightmare.goto(url_ptc)
         .evaluate(evaluateDobPage)
         .then(function(validated) {

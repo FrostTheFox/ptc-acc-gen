@@ -31,7 +31,18 @@ var config = {
 
     // 2Captcha API key
     useAutoCatcha: false,
-    captchaApiKey: "YOUR_2CAPTCHA_API_KEY_HERE"
+    captchaApiKey: "YOUR_2CAPTCHA_API_KEY_HERE",
+
+    // proxy info
+	// Set to true to enable proxy support
+    useProxy: false,
+	// Enter the proxy IP or HOSTNAME and PORT
+    proxyServer: "PROXY_IP_OR_HOSTNAME:PORT",
+	// If your proxy uses IP authentication only, leave this false and proxyUsername/pass will be ignored.
+	// If your proxy requires a user/pass, change to true and enter user/pass below.
+    useProxyAuth: false,
+    proxyUsername: "user",
+    proxyPassword: "pass"
 };
 
 module.exports = config;
