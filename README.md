@@ -48,10 +48,11 @@ Linux Instructions:
 
 1. Run `npm install`
 2. Run config.py or edit config.js manually. (you will need to edit manually for 2captcha)
-2. Run using `makeaccounts.sh`.
-3. Wait for the generator to fill in the second page, then accept the captcha and hit submit.
-4. Repeat for all accounts
-5. Find the generated accounts in PogoPlayer/accounts.csv.
+3. Rename the PoGoPlayer/accounts.csv.example to accounts.csv and clear it
+4. Run using `makeaccounts.sh`.
+5. Wait for the generator to fill in the second page, then accept the captcha and hit submit.
+6. Repeat for all accounts
+7. Find the generated accounts in PogoPlayer/accounts.csv.
 
 There is a few command line arguments for index.js if you run manually. `node index.js -h` for more info.
 
